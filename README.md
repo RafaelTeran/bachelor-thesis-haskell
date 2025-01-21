@@ -125,11 +125,11 @@ After trying unsuccessfully installing some of the dependencies on a Windows mac
 
    Replace `<library-name>` with each dependency listed above. Make sure all dependencies are installed before proceeding.
 
-## 4. **Running the Haskell Scripts**
+4. **Running the Haskell Scripts**
 
 To run the scripts, use a compatible GHC interpreter, such as `ghci`. The scripts include the functions necessary for interactive use. The functionality is further demonstrated in the "Examples and Results" section of this repository. Below, we provide a brief guide to executing the primary components:
 
-### 4.1 **Naive Bayes Language Classifier**
+**Naive Bayes Language Classifier**
 1. Load the script:
    ```bash
    ghci> :l LanguageClassifier
@@ -155,7 +155,7 @@ To run the scripts, use a compatible GHC interpreter, such as `ghci`. The script
      ```
      This function provides a list of all languages with their similarity scores.
 
-### 4.2 **Principal Component Analysis (PCA) Article Recommender**
+**Principal Component Analysis (PCA) Article Recommender**
 1. Load the script:
    ```bash
    ghci> :l ArticleRecommender
@@ -175,7 +175,7 @@ To run the scripts, use a compatible GHC interpreter, such as `ghci`. The script
      ```
      This function downloads the specified article and provides a list of similar articles based on PCA analysis.
 
-### Notes:
+**Notes:**
 - Both functionalities utilize a SQLite database for data management.
 - For additional context and examples, refer to the "Examples and Results" section.
 
