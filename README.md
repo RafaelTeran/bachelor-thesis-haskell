@@ -166,7 +166,7 @@ To run the scripts, use a compatible GHC interpreter, such as `ghci`. The script
    ```bash
    ghci> articlesIntros <number_of_articles> <language_code>
    ```
-   - For English, the script uses a predefined list of stopwords. Similarly, a stopword list is included for Spanish. Users can customize the language and stopword lists as needed.
+   - For English, the script uses a predefined list of stopwords. Similarly, a Spanish version of this list is included in the Spanish-written code. Users can customize the language and stopword lists as needed.
 
 3. Use the recommender:
    - To recommend articles based on a given Wikipedia article:
