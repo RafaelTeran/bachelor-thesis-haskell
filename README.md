@@ -33,29 +33,23 @@ The source code is organized into two main subfolders:
 
 1. **`spanish/`**: The original code in Spanish, without annotations. This version matches the terminology and content described in the accompanying PDF, which is my complete Bachelor’s Degree Thesis. In the PDF, I also provide an extensive mathematical introduction and an in-depth explanation of the two methods used.
 
-   - `base_de_datos/`
-     - `GeneradorEnlaces.hs`: Generates random Wikipedia links.
-     - `GeneradorTextos.hs`: Downloads texts from Wikipedia.
-     - `GeneradorBaseDatos.hs`: Uses the other scripts to create the database.
-   - `clasificador/`
-     - `Clasificador.hs`: General Naive Bayes classifier implementation.
-     - `ClasificadorIdioma.hs`: Example of the classifier applied to language detection using Wikipedia articles.
-   - `recomendador/`
-     - `Recomendador.hs`: General PCA-based recommender system implementation.
-     - `RecomendadorArticulos.hs`: A recommender system for Wikipedia articles, suggesting related articles based on a specific one.
+   - `GeneradorEnlaces.hs`: Generates random Wikipedia links.
+   - `GeneradorTextos.hs`: Downloads texts from Wikipedia.
+   - `GeneradorBaseDatos.hs`: Uses the other scripts to create the database.
+   - `Clasificador.hs`: General Naive Bayes classifier implementation.
+   - `ClasificadorIdioma.hs`: Example of the classifier applied to language detection using Wikipedia articles.
+   - `Recomendador.hs`: General PCA-based recommender system implementation.
+   - `RecomendadorArticulos.hs`: A recommender system for Wikipedia articles, suggesting related articles based on a specific one.
 
 2. **`english/`**: Translated and annotated version of the code. This version is designed for an international audience and includes comments explaining the functionality of the scripts.
 
-   - `database/`
-     - `LinkGenerator.hs`: Generates random Wikipedia links.
-     - `TextGenerator.hs`: Downloads texts from Wikipedia.
-     - `DatabaseGenerator.hs`: Uses the other scripts to create the database.
-   - `classifier/`
-     - `Classifier.hs`: General Naive Bayes classifier implementation.
-     - `LanguageClassifier.hs`: Example of the classifier applied to language detection using Wikipedia articles.
-   - `recommender/`
-     - `Recommender.hs`: General PCA-based recommender system implementation.
-     - `ArticleRecommender.hs`: A recommender system for Wikipedia articles, suggesting related articles based on a specific one.
+   - `LinkGenerator.hs`: Generates random Wikipedia links.
+   - `TextGenerator.hs`: Downloads texts from Wikipedia.
+   - `DatabaseGenerator.hs`: Uses the other scripts to create the database.
+   - `Classifier.hs`: General Naive Bayes classifier implementation.
+   - `LanguageClassifier.hs`: Example of the classifier applied to language detection using Wikipedia articles.
+   - `Recommender.hs`: General PCA-based recommender system implementation.
+   - `ArticleRecommender.hs`: A recommender system for Wikipedia articles, suggesting related articles based on a specific one.
 
 ### `TfG_Análisis_de_datos_y_aprendizaje_automático_en_Haskell.pdf`
 
