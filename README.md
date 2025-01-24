@@ -34,8 +34,8 @@ The source code is organized into two main subfolders:
 1. **`spanish/`**: The original code in Spanish, without annotations. This version matches the terminology and content described in the accompanying PDF, which is my complete Bachelor’s Degree Thesis. In the PDF, I also provide an extensive mathematical introduction and an in-depth explanation of the two methods used.
 
    - `GeneradorEnlaces.hs`: Generates random Wikipedia links.
-   - `GeneradorTextos.hs`: Downloads texts from Wikipedia.
-   - `GeneradorBaseDatos.hs`: Uses the other scripts to create the database.
+   - `GeneradorTextos.hs`: Downloads introductions from Wikipedia articles with titles and languages.
+   - `GeneradorBaseDatos.hs`: Uses the other scripts to create a SQLite database.
    - `Clasificador.hs`: General Naive Bayes classifier implementation.
    - `ClasificadorIdioma.hs`: Example of the classifier applied to language detection using Wikipedia articles.
    - `Recomendador.hs`: General PCA-based recommender system implementation.
@@ -44,8 +44,8 @@ The source code is organized into two main subfolders:
 2. **`english/`**: Translated and annotated version of the code. This version is designed for an international audience and includes comments explaining the functionality of the scripts.
 
    - `LinkGenerator.hs`: Generates random Wikipedia links.
-   - `TextGenerator.hs`: Downloads texts from Wikipedia.
-   - `DatabaseGenerator.hs`: Uses the other scripts to create the database.
+   - `TextGenerator.hs`: Downloads introductions from Wikipedia articles with titles and languages.
+   - `DatabaseGenerator.hs`: Uses the other scripts to create a SQLite database.
    - `Classifier.hs`: General Naive Bayes classifier implementation.
    - `LanguageClassifier.hs`: Example of the classifier applied to language detection using Wikipedia articles.
    - `Recommender.hs`: General PCA-based recommender system implementation.
