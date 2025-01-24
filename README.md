@@ -15,6 +15,8 @@ The aim of this work is to present two distinct methods of Machine Learning: **N
 - A **Naive Bayes Classifier** to identify the language of a given text.  
 - A **PCA-based Recommender System** to suggest related Wikipedia articles.
 
+The database mentioned is an external relational SQLite database, stored as a standalone file. Each record consists of an article's language, title, and introduction text, all extracted from randomly chosen Wikipedia articles.
+
 The complete version of my thesis, written in Spanish and included in this repository, provides an in-depth introduction to the mathematical theory underlying these methods, along with a detailed explanation of the development process for the scripts.
 
 This thesis represents a strong foundation for further studies in Data Analysis, where I aim to deepen my knowledge and establish myself as a renowned professional in the field.
@@ -27,7 +29,7 @@ The repository includes two versions of the code:
 
 ### `src/`
 
-This folder contains the source code divided into two main subfolders:
+The source code is organized into two main subfolders:
 
 1. **`spanish/`**: The original code in Spanish, without annotations. This version matches the terminology and content described in the accompanying PDF, which is my complete Bachelor’s Degree Thesis. In the PDF, I also provide an extensive mathematical introduction and an in-depth explanation of the two methods used.
 
@@ -141,7 +143,7 @@ To run the scripts, use a compatible GHC interpreter, such as `ghci`. The script
    ghci> languageIntros <number_of_article_introductions_per_language>
    ```
    - The database initializes with 30 languages using their ISO 639-1 codes. Users can modify this default setting if desired.
-
+   
 3. Use the classifier:
    - To classify the language of a text:
      ```bash
@@ -203,108 +205,95 @@ These are some examples extracted form the PDF of the complete thesis (in spanis
 #### Naive Bayes Classifier:
 
 ```ghci
-ghci> :l ClasificadorIdioma
-[1 of 5] Compiling Clasificador     ( Clasificador.hs, interpreted )
-[2 of 5] Compiling GeneradorEnlaces ( GeneradorEnlaces.hs, interpreted )
-[3 of 5] Compiling GeneradorTextos  ( GeneradorTextos.hs, interpreted )
-[4 of 5] Compiling GeneradorBaseDatos ( GeneradorBaseDatos.hs, interpreted )
-[5 of 5] Compiling ClasificadorIdioma ( ClasificadorIdioma.hs, interpreted )
+ghci> :l LanguageClassifier
+[1 of 5] Compiling Classifier       ( Classifier.hs, interpreted )
+[2 of 5] Compiling LinkGenerator    ( LinkGenerator.hs, interpreted )
+[3 of 5] Compiling TextGenerator    ( TextGenerator.hs, interpreted )
+[4 of 5] Compiling DataBaseGenerator ( DataBaseGenerator.hs, interpreted )
+[5 of 5] Compiling LanguageClassifier ( LanguageClassifier.hs, interpreted )
 Ok, five modules loaded.
-(0.79 secs,)
+(0.18 secs,)
 
-ghci> introsIdiomas 50
-Base de datos creada con éxito.
-Se han insertado 1500 elementos en la base de datos con éxito.
+ghci> languageIntros 50
+Database successfully created.
+Successfully inserted 30 entries into the database.
 (1109.29 secs, 16,529,818,528 bytes)
 
-ghci> clasificadorIdioma "Me alegro mucho de verte"
-"es"
-(1.85 secs, 1,328,026,208 bytes)
+ghci> languageClassifierAll "the dog has eaten my homework"
+[("en",9.251331851016666e-27),("es",2.2939869088132698e-30),("fr",1.403877758920367e-30),("pt",4.432505042343432e-31),("ru",2.1620706048558024e-31),("de",2.0768171147957485e-31),("cs",1.892527591502138e-31),("ja",1.8754899432188765e-31),("tr",1.339414344418927e-31),("fa",1.2750183775327473e-31),("fi",1.1511398310057148e-31),("zh",1.0737491501268948e-31),("pl",1.020035684817893e-31),("it",9.723138685917976e-32),("sv",9.627714869421418e-32),("nl",8.816588393162065e-32),("he",8.054919869948755e-32),("ro",7.88552219243598e-32),("hi",7.631979224454328e-32),("uk",7.610870781267958e-32),("ko",5.340492326990447e-32),("no",5.171623449928648e-32),("ar",4.87665748868786e-32),("vi",3.870875290731309e-32),("el",3.857553111066574e-32),("th",3.6767940421356004e-32),("hu",3.6200305694047475e-32),("id",3.297224952812741e-32),("ca",2.214063895108989e-32),("bn",1.6114735390125858e-32)]
+(1.94 secs, 1,401,371,984 bytes)
 
-ghci> clasificadorIdiomaTodos "Me alegro mucho de verte"
-[("es",1.4385796966713727e-23),("fr",2.0575862825810786e-24),
-("pt",1.5006988488188862e-24),("en",1.3350031668054959e-24),
-("nl",4.312475639514897e-25),("ca",1.868594793261105e-25),
-("sv",7.40659682333777e-26),("ro",7.234569525937924e-26),
-("it",2.457068448809503e-26),("tr",2.0575288642321292e-26),
-("hu",1.6668801211580946e-26),("no",1.1000231787011853e-26),
-("de",1.0814625409986618e-26),("ar",9.750177632771201e-27),
-("ja",9.45650958601682e-27),("id",6.475369149049737e-27),
-("fa",6.467582829508386e-27),("uk",5.923137433434641e-27),
-("ru",5.703296873969729e-27),("pl",5.6597861219381146e-27),
-("zh",5.320793439211851e-27),("vi",4.238956125487497e-27),
-("he",4.1435008947009256e-27),("el",2.0638316732414866e-27),
-("th",1.8556563972317497e-27),("ko",1.3629206500101532e-27),
-("cs",1.2430390810619446e-27),("fi",9.051011209785674e-28),
-("bn",7.818284158264162e-28),("hi",4.716927727546853e-28)]
-(1.97 secs, 1,329,142,192 bytes)
+ghci> languageClassifierAll "el perro se ha comido mis deberes"
+[("es",8.628169490183964e-33),("ca",5.133938728833182e-34),("ro",4.299213679270386e-35),("pt",4.184717459757538e-35),("fr",1.94309348861031e-35),("en",1.513198281365557e-35),("cs",1.3341252219912483e-35),("it",3.5761734126662986e-36),("fi",3.018841066234622e-36),("de",2.5094455229528134e-36),("ja",2.3355457438405972e-36),("zh",1.3399253136917638e-36),("ru",1.305882078746468e-36),("sv",8.717913424446208e-37),("fa",7.723732887076093e-37),("hu",6.604047351844521e-37),("pl",6.13068531943295e-37),("ar",5.937512922562016e-37),("nl",5.361844648950366e-37),("he",4.8613226006667445e-37),("vi",4.671979639519763e-37),("uk",4.623802129541536e-37),("tr",4.0782586881110235e-37),("id",4.009076592593674e-37),("ko",3.273764682762488e-37),("no",3.1078720763495153e-37),("el",2.291824469793233e-37),("th",2.2596944553171247e-37),("bn",1.9391980012185147e-37),("hi",1.2989762746331858e-37)]
+(2.09 secs, 1,579,712,072 bytes)
 
-ghci> clasificadorIdioma "I'm very happy to see you"
-"en"
-(2.09 secs, 1,522,266,088 bytes)
+ghci> languageClassifier "le chien a mangé mes devoirs"
+"fr"
+(1.90 secs, 1,400,231,000 bytes)
 
-ghci> clasificadorIdioma "Estou muito feliz em ver você"
-"pt"
-(2.06 secs, 1,522,285,544 bytes)
-
-ghci> clasificadorIdioma "Ich freue mich sehr, Sie zu sehen"
+ghci> languageClassifier "Der Hund hat meine Hausaufgaben gefressen"
 "de"
-(2.28 secs, 1,716,540,048 bytes)
+(1.88 secs, 1,400,294,232 bytes)
 
-ghci> clasificadorIdioma "Bardzo się cieszę, że cię widzę"
-"pl"
-(2.92 secs, 1,522,319,184 bytes)
+ghci> languageClassifier "ο σκύλος έφαγε την εργασία μου"
+"el"
+(1.87 secs, 1,400,240,712 bytes)
 
-ghci> clasificadorIdioma "Sono molto felice di vederti"
-"it"
-(1.95 secs, 1,328,045,632 bytes)
+ghci> languageClassifier "con chó đã ăn bài tập về nhà của tôi"
+"vi"
+(2.58 secs, 2,113,619,368 bytes)
 
-ghci> clasificadorIdioma "Jeg er veldig glad for å se deg"
-"no"
-(2.61 secs, 1,910,765,376 bytes)
+ghci> languageClassifier "o cachorro comeu meu dever de casa"
+"pt"
+(2.13 secs, 1,578,597,592 bytes)
 ```
 
 #### PCA Recommender:
 
 ```ghci
-ghci> :l RecomendadorArticulos
-[1 of 5] Compiling GeneradorEnlaces ( GeneradorEnlaces.hs, interpreted )
-[2 of 5] Compiling GeneradorTextos  ( GeneradorTextos.hs, interpreted )
-[3 of 5] Compiling GeneradorBaseDatos ( GeneradorBaseDatos.hs, interpreted )
-[4 of 5] Compiling Recomendador     ( Recomendador.hs, interpreted )
-[5 of 5] Compiling RecomendadorArticulos ( RecomendadorArticulos.hs, interpreted )
+ghci> :l ArticleRecommender
+[1 of 5] Compiling LinkGenerator    ( LinkGenerator.hs, interpreted )
+[2 of 5] Compiling Recommender      ( Recommender.hs, interpreted )
+[3 of 5] Compiling TextGenerator    ( TextGenerator.hs, interpreted )
+[4 of 5] Compiling DataBaseGenerator ( DataBaseGenerator.hs, interpreted )
+[5 of 5] Compiling ArticleRecommender ( ArticleRecommender.hs, interpreted )
 Ok, five modules loaded.
-(1.14 secs,)
+(2.24 secs,)
 
-ghci> introsArticulos 1500 "es"
-Base de datos creada con éxito.
-Se han insertado 1500 elementos en la base de datos con éxito.
-(929.72 secs, 16,246,341,576 bytes)
+ghci> articleIntros 1500 "en"
+Database successfully created.
+Successfully inserted 1500 entries into the database.
+(1135.68 secs, 16,272,789,992 bytes)
 
-ghci> recomendadorArticulos "Usain Bolt" 10
-Insertado en la base de datos con éxito.
-["AlphaGo Zero","Serie Nacional de B\233isbol 1965-1966","Adri\225n Garc\237a","Stefania Belmondo","Tatsuhiro Yonemitsu","Indonesia en los Juegos Ol\237mpicos de Roma 1960","Mauritania en los Juegos Paral\237mpicos de S\237dney 2000","Mal\237 en los Juegos Ol\237mpicos de Londres 2012","Miguel Martinez (ciclista)","Lilou Llu\237s Valette"]
-(2.24 secs, 743,440,056 bytes)
+ghci> articleRecommender "Usain Bolt" 10
+Successfully inserted into the database.
+["Maki Tabata","Val\233rie Grenier","2023 IIHF World Championship final","Supercard of Honor (2023)","Jason Warner","2007 World Women's Curling Championship","Georgina Garc\237a P\233rez","WADP Numbering System","Geiny P\225jaro","List of baseball players who are Olympic gold medalists and World Series champions"]
+(2.09 secs, 788,098,416 bytes)
 
-ghci> recomendadorArticulos "Sevilla" 10
-Insertado en la base de datos con éxito.
-["Sitio de Ciudad Rodrigo (1707)","Sombrerete","Neckarsulm","Casino Militar de Melilla","La Encarnaci\243n (desambiguaci\243n)","Novoros\237isk","Dom\382ale","Hoery\335ng","\346winouj\347cie","Circunscripci\243n electoral de Zaragoza"]
-(3.24 secs, 737,889,256 bytes)
+ghci> articleRecommender "London" 10
+Successfully inserted into the database.
+["Hat Yai","Sun Valley, Idaho","Susaki, K\333chi","Nizhny Novgorod City Rail","MKM Stadium","List of people named Shemaiah in the Bible","Street of the Prophets","Pedro Vicente Maldonado (city)","Gavi\227o Kyikatej\234 Futebol Clube","Kalmiuske"]
+(1.93 secs, 791,643,008 bytes)
 
-ghci> recomendadorArticulos "Manzana" 10
-Insertado en la base de datos con éxito.
-["Phalonidia lydiae","Messor reticuliventris","Derolus griseonotatus","Choristoneura occidentalis","Eucalyptus regnans","Nyssodrysternum fulminans","Phalonidia docilis","Brancasaurus","Strangalia beltii","Xixuthrus terribilis"]
-(2.24 secs, 743,213,920 bytes)
+ghci> articleRecommender "New York" 10
+Successfully inserted into the database.
+["Metuchen, New Jersey","2001 New York City Marathon","Surprise Lake Camp","New Jersey Route 81","Stanley, Inc.","Minnesota State Highway 237","The Emperor's Tomb","Crookwell railway station","Chirlane McCray","Union Bridge Company"]
+(1.85 secs, 790,391,128 bytes)
 
-ghci> recomendadorArticulos "Albert Einstein" 10
-Insertado en la base de datos con éxito.
-["Descubrimientos de pies humanos en el Mar de los Salish","Maeve Brennan","Andrew N. Dugger","Shave and a Haircut","John Smith (luchador ol\237mpico)","Pr\243tesis de retina Argus","Atlantismo","Transporte Presidente Pinto","Isla de hielo de Fletcher","Samantha Arsenault"]
-(2.52 secs, 746,537,408 bytes)
+ghci> articleRecommender "Banana" 10
+Successfully inserted into the database.
+["Encyclia fehlingii","Trithuria","Monoclea forsteri","Arahura","2014 FIBA 3x3 World Tour Manila Masters","Chi Mei Corporation","Sophie Becker","Chrysodeixis eriosoma","Diplopseustis selenalis","Top Spin 3"]
+(1.84 secs, 793,214,896 bytes)
 
-ghci> recomendadorArticulos "España" 10
-Insertado en la base de datos con éxito.
-["\205ndice de referencia de pr\233stamos hipotecarios","C\233sar E. Arroyo","Invasi\243n de Portugal (1807)","Jos\233 Gautier Ben\237tez","Comisiones Obreras de Euskadi","Circunscripci\243n electoral de Zaragoza","Condado del Puente","Menorca (gallina)","Archivo Hist\243rico Minero de la Fundaci\243n R\237o Tinto","Boeng Krum"]
-(2.30 secs, 753,417,248 bytes)
+ghci> articleRecommender "Albert Einstein" 10
+Successfully inserted into the database.
+["WADP Numbering System","Tony De Vit","2019 in UFC","Motor Trend Car of the Year","Little Finlandia Prize","Black Forest Clock Association","Kraken (roller coaster)","Anna Leopoldovna","AP Macroeconomics","Stefan Holtz"]
+(1.91 secs, 796,784,624 bytes)
+
+ghci> articleRecommender "Michael Jackson" 10
+Successfully inserted into the database.
+["The Right Time (Hoodoo Gurus song)","Rols\248 Kapel","2023 IIHF World Championship final","Deme (disambiguation)","The Promise Man","Southern Drawl (album)","Roehampton House","Georgina Garc\237a P\233rez","Ion Theodorescu-Sion","FitzGerald dynasty"]
+(1.90 secs, 800,520,512 bytes)
 ```
 ---
 
