@@ -1,6 +1,6 @@
 # Data Analysis and Machine Learning in Haskell
 
-This repository contains the code and resources for my Bachelor’s Degree Thesis: **"Data Analysis and Machine Learning in Haskell"**. It demonstrates the creation of a database using the Wikipedia API and two key applications: a Naive Bayes Classifier and a PCA-based Recommender System.
+This repository contains the code and resources for my Bachelor’s Degree Final Year Project: **"Data Analysis and Machine Learning in Haskell"**. It demonstrates the creation of a database using the Wikipedia API and two key applications: a Naive Bayes Classifier and a PCA-based Recommender System.
 
 **Nota para los usuarios hispanohablantes (Note for Spanish-speaking users):**  
 Este repositorio contiene el código de mi Trabajo de Fin de Grado: **"Análisis de Datos y Aprendizaje Automático en Haskell"**. Las explicaciones completas sobre la teoría matemática y el desarrollo de los métodos presentados se encuentran en la versión completa de mi TFG, escrita en español y subida en este repositorio. La versión del código en español no tiene anotaciones porque el código se encuentra bien explicado en el PDF.
@@ -9,7 +9,7 @@ Este repositorio contiene el código de mi Trabajo de Fin de Grado: **"Análisis
 
 ## Introduction
 
-As part of my Bachelor’s Degree Thesis in Mathematics, titled **"Data Analysis and Machine Learning in Haskell"**, completed at the University of Seville, I explored the application of advanced mathematical concepts in data analysis and machine learning using Haskell, a functional programming language very similar to the way mathematicians think and well-suited for mathematical computations.
+As part of my Bachelor’s Degree Final Year Project in Mathematics, titled **"Data Analysis and Machine Learning in Haskell"**, completed at the University of Seville, I explored the application of advanced mathematical concepts in data analysis and machine learning using Haskell, a functional programming language very similar to the way mathematicians think and well-suited for mathematical computations.
 
 The aim of this work is to present two distinct methods of Machine Learning: **Naive Bayes**, a supervised learning system, and **Principal Component Analysis (PCA)**, a unsupervised learning system. To demonstrate their capabilities, practical applications have been developed for each method, supported by a custom database created using the Wikipedia API. The two applications are:
 - A **Naive Bayes Classifier** to identify the language of a given text.  
@@ -17,9 +17,9 @@ The aim of this work is to present two distinct methods of Machine Learning: **N
 
 The database mentioned is an external relational SQLite database, stored as a standalone file. Each record consists of an article's language, title, and introduction text, all extracted from randomly chosen Wikipedia articles.
 
-The complete version of my thesis, written in Spanish and included in this repository, provides an in-depth introduction to the mathematical theory underlying these methods, along with a detailed explanation of the development process for the scripts.
+The complete version of my Final Year Project, written in Spanish and included in this repository, provides an in-depth introduction to the mathematical theory underlying these methods, along with a detailed explanation of the development process for the scripts.
 
-This thesis represents a strong foundation for further studies in Data Analysis, where I aim to deepen my knowledge and establish myself as a renowned professional in the field.
+This project represents a strong foundation for further studies in Data Analysis, where I aim to deepen my knowledge and establish myself as a renowned professional in the field.
 
 ---
 
@@ -31,7 +31,7 @@ The repository includes two versions of the code:
 
 The source code is organized into two main subfolders:
 
-1. **`spanish/`**: The original code in Spanish, without annotations. This version matches the terminology and content described in the accompanying PDF, which is my complete Bachelor’s Degree Thesis. In the PDF, I also provide an extensive mathematical introduction and an in-depth explanation of the two methods used.
+1. **`spanish/`**: The original code in Spanish, without annotations. This version matches the terminology and content described in the accompanying PDF, which is my complete Bachelor’s Degree Final Year Project. In the PDF, I also provide an extensive mathematical introduction and an in-depth explanation of the two methods used.
 
    - `GeneradorEnlaces.hs`: Generates random Wikipedia links.
    - `GeneradorTextos.hs`: Downloads introductions from Wikipedia articles with titles and languages.
@@ -53,7 +53,7 @@ The source code is organized into two main subfolders:
 
 ### `TfG_Análisis_de_datos_y_aprendizaje_automático_en_Haskell.pdf`
 
-The complete thesis document in Spanish, detailing the methodology, implementation, and results. This includes:
+The complete project document in Spanish, detailing the methodology, implementation, and results. This includes:
 
 - A comprehensive mathematical introduction covering both algebraical and statistical concepts used. These can be found in sections **"2. Clasificador Naive Bayes"** and **"3. Análisis de Componentes Principales"**, specifically subsections **2.1, 2.2, 3.1, 3.2, and 3.3**.
 - Detailed theoretical explanations of the Naive Bayes Classifier and PCA Recommender System. These correspond again to sections **2. and 3.**, now subsections **2.3, 3.4, and 3.5**.
@@ -194,7 +194,7 @@ By following this guide, you can interactively explore and utilize the Naive Bay
 
 ## Examples and Results
 
-These are some examples extracted form the PDF of the complete thesis (in spanish) and using ghci.
+These are some examples extracted form the PDF of the complete project (in spanish) and using ghci.
 
 #### Naive Bayes Classifier:
 
